@@ -1,8 +1,8 @@
-#############################################################################################
+#######################################################################################
   A Spring boot based application, 
   offer shorten URL service, 
   can be containized as standard Docker image
-#############################################################################################
+#######################################################################################
 
 
 - github link: https://github.com/jiacraft/shortenurlservice.git
@@ -44,11 +44,11 @@
 
 		http://{ServiceBaseHostname}/url?shortUrl=http://intuit.su/{ShorenKey}	
 
-##############################################################################################
+########################################################################################
  Steps to create docker image and run the app in Docker container
  
  NOTE: docker need to be up and running prior to perform the following steps
-##############################################################################################
+########################################################################################
 
 - to create docker image, from where the project root (where pom.xml is located), type:
 
