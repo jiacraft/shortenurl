@@ -22,6 +22,8 @@
 		mvn clean package
 		java -jar target/shortenurl-service.jar
 
+	3. Access the service by either http POST to get shorten URL, or http GET to get original/long URL, described as next section
+
 - There are two service APIs, 1. POST to get shortened URL; 2. GET to get original/long URL
 
 	1. To shorten a URL, run http POST, against:
@@ -38,11 +40,25 @@
 
 		{"longUrl" : "http://myurl.for.shorten/asds" }
 
+	   Sample response:
+
+		{
+                        "shortUrl": "http://intu.su/Sbs8WTp",
+                        "longUrl": "http://longulr.toshorten.myurl.com"
+                }
+
 	   NOTE: the value of 'longUrl' should have valid URL format, 
 
 	2. To query/get the long url by shorten URL, run http GET, with URL format as:
 
 		http://{ServiceBaseHostname}/url?shortUrl=http://intuit.su/{ShorenKey}	
+
+	   Sample response,
+
+		{
+			"shortUrl": "http://intu.su/Sbs8WTp",
+    			"longUrl": "http://longulr.toshorten.myurl.com"
+		}
 
 ########################################################################################
  Steps to create docker image and run the app in Docker container
