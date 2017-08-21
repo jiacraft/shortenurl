@@ -38,7 +38,7 @@
 
 		{"longUrl" : "http://myurl.for.shorten/asds" }
 
-	   NOTE: the value of 'longUrl' should have valid URL format, with either http or https as protocol
+	   NOTE: the value of 'longUrl' should have valid URL format, 
 
 	2. To query/get the long url by shorten URL, run http GET, with URL format as:
 
