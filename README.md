@@ -51,7 +51,11 @@
 
 	2. To query/get the long url by shorten URL, run http GET, with URL format as:
 
-		http://{ServiceBaseHostname}/url?shortUrl=http://intuit.su/{ShorenKey}	
+		http://{ServiceBaseHostname}/url?shortUrl=http://intuit.su/{ShortenKey}	
+
+	   Sample request:
+
+		http://localhost:5000/url?shortenUrl=http://intu.su/Sbs8WTp
 
 	   Sample response,
 
