@@ -1,7 +1,13 @@
 #######################################################################################
-  A Spring boot based application, 
-  offer shorten URL service, 
-  can be containized as standard Docker image
+  - A Spring boot based application, offer shorten URL service, 
+  	can be containized as standard Docker image
+  - Cache: Service APIs is cache enabled, but for this demo project, we do not use a specific 
+    caching library. The cache store by Spring default is ConcurrentHashMap
+  - Data Repository: Shorten URL and their original URL are stored in two ConcurrentHashMap 
+  - Limitations: current cache and data repository supports single Server instance scenarios.
+    To support distributed multi server instance, need to add centrolized DATA storages 
+    (AWS RDS. Dynamos DB, etc). For distributed cache, the service could integrate with 
+    distributed cache service (MEMCACHE, for example)  
 #######################################################################################
 
 
@@ -24,7 +30,7 @@
 
 	3. Access the service by either http POST to get shorten URL, or http GET to get original/long URL, described as next section
 
-- There are two service APIs, 1. POST to get shortened URL; 2. GET to get original/long URL
+- There are two service APIs, 1. http POST to get shortened URL; 2. http GET to get original/long URL
 
 	1. To shorten a URL, run http POST, against:
 
