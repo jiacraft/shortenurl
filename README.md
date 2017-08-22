@@ -11,7 +11,7 @@
 #######################################################################################
 
 
-- github link: https://github.com/jiacraft/shortenurlservice.git
+- github link: https://github.com/jiacraft/shortenurl
 
 - The app requires Java 8 
 
