@@ -23,7 +23,7 @@ import com.intuit.shortenurl.services.ShortenUrlService;
 
 /**
  * @author bruce.jia
- * @Date Aug. 13, 2017
+ * @Date Aug. 19, 2017
  * @version 
  */
 @RestController

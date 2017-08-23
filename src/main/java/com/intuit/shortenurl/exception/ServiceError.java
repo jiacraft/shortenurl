@@ -1,6 +1,13 @@
 package com.intuit.shortenurl.exception;
 
-public class ServiceError {
+import java.io.Serializable;
+
+public class ServiceError implements Serializable {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7140021405116494832L;
 	
 	//private ErrorCode code;
 	private String reason;
