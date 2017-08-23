@@ -9,10 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestBody;
-// import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -77,32 +75,26 @@ public class ShortenUrlController {
 		ServiceError error = new ServiceError();
 		HttpStatus status = null;
 		if (se.getCode() == ErrorCode.INVALUD_URL_FORMAT) {	
-			error.setCode(ErrorCode.INVALUD_URL_FORMAT);
+			//error.setCode(ErrorCode.INVALUD_URL_FORMAT);
 			error.setMessage("URL in request is not valid");
 			error.setReason("InvalidURL");
 			status = HttpStatus.BAD_REQUEST;
 		} else if (se.getCode() == ErrorCode.INVALID_REQUEST) {
-			error.setCode(ErrorCode.INVALID_REQUEST);
+			//error.setCode(ErrorCode.INVALID_REQUEST);
 			error.setMessage(se.getMsg() == null ? "invalid request" : se.getMsg());
 			error.setReason("InvalidRequest");
 			status = HttpStatus.BAD_REQUEST;
 		} else if (se.getCode() == ErrorCode.NULL_EMPTY_URL) {
-			error.setCode(ErrorCode.NULL_EMPTY_URL);
+			//error.setCode(ErrorCode.NULL_EMPTY_URL);
 			error.setMessage(se.getMsg() == null ? "null or empty URL in request" : se.getMsg());
 			error.setReason("EmptyURL");
 			status = HttpStatus.BAD_REQUEST;
 		} else if (se.getCode() == ErrorCode.NOT_FOUND) {
-			error.setCode(ErrorCode.NOT_FOUND);
+			//error.setCode(ErrorCode.NOT_FOUND);
 			error.setMessage(se.getMsg() == null ? "required resource is not found" : se.getMsg());
 			error.setReason("NotFound");
 			status = HttpStatus.NOT_FOUND;
-		} 
-		
-		/* else {
-			error.setCode(ErrorCode.INTERNAL_ERROR);
-			error.setReason("InternalServiceError");
-			status = HttpStatus.INTERNAL_SERVER_ERROR;
-		} */
+		} 				
 	
 		return new ResponseEntity<ServiceError> (error, status);
     }  

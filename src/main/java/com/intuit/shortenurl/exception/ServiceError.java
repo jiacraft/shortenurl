@@ -2,16 +2,18 @@ package com.intuit.shortenurl.exception;
 
 public class ServiceError {
 	
-	private ErrorCode code;
+	//private ErrorCode code;
 	private String reason;
 	private String message;
 	
+	/*
 	public ErrorCode getCode() {
 		return code;
 	}
 	public void setCode(ErrorCode code) {
 		this.code = code;
-	}
+	} */
+	
 	public String getReason() {
 		return reason;
 	}
