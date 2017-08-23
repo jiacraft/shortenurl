@@ -40,7 +40,7 @@ public class ShortenUrlController {
 	public UrlPair shortUrl(@RequestBody UrlRequest req) throws UrlShortenServiceException {
 		if(req == null || StringUtils.isEmpty(req.getLongUrl() )) {
 			throw new UrlShortenServiceException(
-					ErrorCode.NULL_EMPTY_URL);
+					ErrorCode.INVALID_REQUEST);
 		}
 		
 		logger.debug("Request for shorten URL, ori url: " + req.getLongUrl());

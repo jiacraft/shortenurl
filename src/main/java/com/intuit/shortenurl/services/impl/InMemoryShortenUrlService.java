@@ -19,7 +19,7 @@ public class InMemoryShortenUrlService implements  ShortenUrlService{
 	private static final String BASE_URL_PATTERN = "[a-zA-Z0-9_\\-\\.]+\\.([A-Za-z/]{2,5})[a-zA-Z0-9_/\\&\\?\\=\\-\\.\\~\\%]*";
 	
 	public static final String BASE_DOMAIN = "http://intu.su";
-	private static final int KEY_LENGTH = 7;
+	private static int KEY_LENGTH = 7;
 	
 	public static final char ALL_CHARS[];
 	
@@ -51,9 +51,12 @@ public class InMemoryShortenUrlService implements  ShortenUrlService{
 
 	@Override
 	@Cacheable("shortenUrl")
-	public String shortenUrl(String originalUrl) throws UrlShortenServiceException {	
-		
+	public String shortenUrl(String originalUrl) throws UrlShortenServiceException {			
 		logger.debug("To get shorten URL from service, long URL: " + originalUrl);
+		
+		if(keyExhausted()) {
+			++KEY_LENGTH;
+		}
 		
 		String shortUrl = "";
 		if (validateUrl(originalUrl)) {
@@ -104,6 +107,7 @@ public class InMemoryShortenUrlService implements  ShortenUrlService{
 	} */
 	
 	private String generateUrlKey() {
+		
 		String key = "";
 		boolean flag = true;
 		while (flag) {
@@ -118,21 +122,24 @@ public class InMemoryShortenUrlService implements  ShortenUrlService{
 		}
 		return key;
 	}
+	
+	// TODO: make this as a UTIL method
+	private boolean keyExhausted() {
+		// TODO: check key set in 'keyUrlMap' has been exhusted or not
+		int range = KEY_LENGTH - 7;
+		long maxNumberOfKey = 0;
+		for(int i = 0; i<=range; i++) {
+			maxNumberOfKey += Math.pow(62, (7+i));
+		}
+		
+		if(keyUrlMap.size() >= maxNumberOfKey) {
+			return true;
+		}
+		
+		return false;
+	}
  	
-	/*
-	private String extractUrl(String url) {
-		if (url.substring(0, 7).equals("http://"))
-			url = url.substring(7);
-
-		if (url.substring(0, 8).equals("https://"))
-			url = url.substring(8);
-
-		//if (url.charAt(url.length() - 1) == '/')
-		//	url = url.substring(0, url.length() - 1);
-		return url;
-	} */
-
-	// 
+	// TODO: make this as a UTIL method
 	public boolean validateUrl(String url) {
 		String urlPattern = null;
 		
@@ -144,4 +151,5 @@ public class InMemoryShortenUrlService implements  ShortenUrlService{
 		
 		return url.matches(urlPattern);
 	}
+	
 }
